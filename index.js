@@ -12,17 +12,25 @@ hideElements();
 hideMessage();
 
 nextButton.addEventListener("click", function validateBillAmount() {
-    if(billAmount.value > 0) {
-        showElements();
-        hideMessage();
+    var errorMessage = "Invalid input";
+    if(Number.isInteger(parseInt(billAmount.value))) {
+        if(billAmount.value >= 0) {
+            showElements();
+            hideMessage();
+        } else {
+            errorMessage += ": It must be a positive number.";
+            hideElements();
+            showMessage(errorMessage);
+        }
     } else {
+        errorMessage += ": It must be a numeric value.";
         hideElements();
-        showMessage("Invalid input. It must be greater than 0.");
+        showMessage(errorMessage);
     }
 })
 
 checkButton.addEventListener("click", function validateCashAmount(){
-    if(cashGiven.value >= billAmount.value) {
+    if(parseInt(cashGiven.value) >= parseInt(billAmount.value)) {
         const amountToBeReturned = cashGiven.value - billAmount.value;
         calculateChange(amountToBeReturned);
         hideMessage();
@@ -37,6 +45,8 @@ function calculateChange(amountDifference) {
         amountDifference %= availableNotes[i];
         if(numberOfNotes > 0) {
             noOfNotes[i].innerText = numberOfNotes;
+        } else {
+            noOfNotes[i].innerText = "";
         }
     }
 }
