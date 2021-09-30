@@ -1,0 +1,36 @@
+:root {
+    --primary: rgb(62, 202, 202);
+    --secondary: rgb(3, 168, 180);
+}
+
+* {
+    background-color: var(--secondary);
+}
+
+.container {
+    background-color: var(--primary);
+    display: flex;
+    flex-direction: column;
+    max-width: 375px;
+    margin: auto;
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid black;
+}
+
+h1, p , label, input, button, caption {
+    background-color: var(--primary)
+}
+
+input, button, caption {
+    border-radius: 5px;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem 0.5rem;
+    font-size: large;
+}
+
+table {
+    text-align: center;
+    border-radius: 5px;
+    background-color: black;
+}
